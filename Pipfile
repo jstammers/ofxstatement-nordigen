@@ -13,4 +13,4 @@ tomli = "*"
 
 [packages]
 ofxstatement = "*"
-ofxstatement-sample = {editable = true,path = "."}
+ofxstatement-nordigen = {editable = true,path = "."}

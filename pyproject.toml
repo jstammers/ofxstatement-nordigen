@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ofxstatement-sample"
+name = "ofxstatement-nordigen"
 version = "0.0.1"
 authors = [
-  { name="Andrey Lebedev", email="andrey@lebedev.lt" },
+  { name="Jimmy Stammers", email="jimmy.stammers@gmail.com" },
 ]
-description = "Sample plugin for ofxstatement"
+description = "ofxstatement plugin for Nordigen bank statements"
 readme = "README.rst"
 requires-python = ">=3.9"
 classifiers = [
@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/kedder/ofxstatement-sample/"
+Homepage = "https://github.com/jstammers/ofxstatement-nordigen/"
 
 [project.entry-points."ofxstatement"]
-sample = "ofxstatement_sample.plugin:SamplePlugin"
+nordigen = "ofxstatement_nordigen.plugin:NordigenPlugin"

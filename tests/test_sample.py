@@ -2,7 +2,7 @@ import os
 
 from ofxstatement.ui import UI
 
-from ofxstatement_sample.plugin import SamplePlugin
+from ofxstatement.plugin import SamplePlugin
 
 
 def test_sample() -> None:
