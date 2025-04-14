@@ -31,22 +31,16 @@ from ofxstatement_nordigen.schemas import NordigenTransactionModel
             "valueDate": "2025-04-05",
             "bookingDateTime": "2025-04-05T00:00:00+00:00",
             "valueDateTime": "2025-04-05T00:00:00+00:00",
-            "transactionAmount": {
-                "amount": "0.00",
-                "currency": "XXX"
-            },
-            "currencyExchange": {
-                "sourceCurrency": "XXX",
-                "exchangeRate": "0.0"
-            },
+            "transactionAmount": {"amount": "0.00", "currency": "XXX"},
+            "currencyExchange": {"sourceCurrency": "XXX", "exchangeRate": "0.0"},
             "remittanceInformationUnstructured": "anonymized_remittance_information",
             "additionalInformation": "anonymized_additional_information",
             "additionalDataStructured": {
                 "CardSchemeName": "anonymized_card_scheme",
                 "Name": "anonymized_name",
-                "Identification": "anonymized_identification"
+                "Identification": "anonymized_identification",
             },
-            "internalTransactionId": "anonymized_internal_transaction_id"
+            "internalTransactionId": "anonymized_internal_transaction_id",
         },
     ],
 )

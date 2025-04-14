@@ -21,6 +21,7 @@ class Amount(BaseModel):
             return Currency(value)
         return value
 
+
 class InstructedAmount(Amount):
     targetCurrency: Optional[Currency] = None
     sourceCurrency: Optional[Currency] = None
@@ -32,12 +33,14 @@ class InstructedAmount(Amount):
             return Currency(value)
         return value
 
+
 class Account(BaseModel):
     bban: Optional[str] = None
 
 
 class ReportExchangeRate(BaseModel):
     instructedAmount: Optional[InstructedAmount] = None
+
 
 class NordigenTransactionModel(BaseModel):
     """

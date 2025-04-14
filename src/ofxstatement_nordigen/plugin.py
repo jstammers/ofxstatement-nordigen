@@ -5,7 +5,7 @@ from ofxstatement.plugin import Plugin
 from ofxstatement.parser import StatementParser
 from ofxstatement.statement import Statement, StatementLine
 
-from ofxstatement_nordigen.schemas import (NordigenTransactionModel)
+from ofxstatement_nordigen.schemas import NordigenTransactionModel
 
 
 class NordigenPlugin(Plugin):
@@ -28,7 +28,7 @@ class NordigenParser(StatementParser[str]):
         super() implementation will call to split_records and parse_record to
         process the file.
         """
-        with open(self.filename, "r") as f:
+        with open(self.filename, "r"):
             return super().parse()
 
     def split_records(self) -> Iterable[str]:
@@ -40,7 +40,7 @@ class NordigenParser(StatementParser[str]):
     def parse_record(self, line: str) -> StatementLine:
         """Parse given transaction line and return StatementLine object"""
 
-        #TODO: Infer transaction type from transaction data
+        # TODO: Infer transaction type from transaction data
         statement = StatementLine()
         transaction = json.loads(line)
         transaction_data = NordigenTransactionModel(**transaction)
@@ -53,6 +53,8 @@ class NordigenParser(StatementParser[str]):
         statement.check_no = transaction_data.checkId
         statement.refnum = transaction_data.internalTransactionId
         statement.currency = transaction_data.transactionAmount.currency
-        if transaction_data.currencyExchange and hasattr(transaction_data.currencyExchange, "sourceCurrency"):
+        if transaction_data.currencyExchange and hasattr(
+            transaction_data.currencyExchange, "sourceCurrency"
+        ):
             statement.orig_currency = transaction_data.currencyExchange.sourceCurrency
         return statement
