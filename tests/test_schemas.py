@@ -1,6 +1,6 @@
 import pytest
 
-from ofxstatement_nordigen.schemas import GoCardlessTransactionModel
+from ofxstatement_nordigen.schemas import NordigenTransactionModel
 
 
 @pytest.mark.parametrize(
@@ -51,5 +51,5 @@ from ofxstatement_nordigen.schemas import GoCardlessTransactionModel
     ],
 )
 def test_go_cardless_transaction_model(data):
-    validated = GoCardlessTransactionModel(**data)
+    validated = NordigenTransactionModel(**data)
     assert validated is not None

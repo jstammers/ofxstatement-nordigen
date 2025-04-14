@@ -23,9 +23,9 @@ class Account(BaseModel):
 class ReportExchangeRate(BaseModel):
     instructedAmount: InstructedAmount = None
 
-class GoCardlessTransactionModel(BaseModel):
+class NordigenTransactionModel(BaseModel):
     """
-    GoCardless transaction model.
+    Nordigen data transaction model.
     """
 
     balanceAfterTransaction: Optional[float] = None

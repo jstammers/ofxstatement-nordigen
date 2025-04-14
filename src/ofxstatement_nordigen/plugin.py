@@ -5,7 +5,7 @@ from ofxstatement.plugin import Plugin
 from ofxstatement.parser import StatementParser
 from ofxstatement.statement import Statement, StatementLine
 
-from ofxstatement_nordigen.schemas import (GoCardlessTransactionModel)
+from ofxstatement_nordigen.schemas import (NordigenTransactionModel)
 
 
 class NordigenPlugin(Plugin):
@@ -43,7 +43,7 @@ class NordigenParser(StatementParser[str]):
         #TODO: Infer transaction type from transaction data
         statement = StatementLine()
         transaction = json.loads(line)
-        transaction_data = GoCardlessTransactionModel(**transaction)
+        transaction_data = NordigenTransactionModel(**transaction)
         statement.id = transaction_data.transactionId
         statement.date = transaction_data.valueDate
         statement.amount = transaction_data.transactionAmount
