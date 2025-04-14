@@ -2,15 +2,16 @@ import os
 
 from ofxstatement.ui import UI
 
-from ofxstatement.plugin import SamplePlugin
+from ofxstatement_nordigen.plugin import NordigenPlugin
 
 
 def test_sample() -> None:
-    plugin = SamplePlugin(UI(), {})
+    plugin = NordigenPlugin(UI(), {})
     here = os.path.dirname(__file__)
-    sample_filename = os.path.join(here, "sample-statement.csv")
-
-    parser = plugin.get_parser(sample_filename)
-    statement = parser.parse()
-
-    assert statement is not None
+    for filename in os.listdir(here):
+        if filename.endswith(".json"):
+            sample_filename = os.path.join(here, filename)
+            parser = plugin.get_parser(sample_filename)
+            statement = parser.parse()
+            # assert isinstance(statement, Statement)
+            assert statement is not None

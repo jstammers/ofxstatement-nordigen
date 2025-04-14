@@ -14,3 +14,4 @@ tomli = "*"
 [packages]
 ofxstatement = "*"
 ofxstatement-nordigen = {editable = true,path = "."}
+importlib_metadata = {version = "*", markers = "python_version < '3.10'"}
