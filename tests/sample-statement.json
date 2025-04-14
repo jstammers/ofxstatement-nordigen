@@ -1,0 +1,85 @@
+{
+  "booked": [
+    {
+      "transactionId": "tx_0000Anonymized1",
+      "bookingDate": "2025-03-28",
+      "bookingDateTime": "2025-03-28T11:13:14.034Z",
+      "transactionAmount": {
+        "amount": "-10.5000",
+        "currency": "GBP"
+      },
+      "creditorName": "Anonymous Creditor 1",
+      "remittanceInformationUnstructured": "Anonymous Info 1",
+      "proprietaryBankTransactionCode": "code1",
+      "merchantCategoryCode": "0001",
+      "internalTransactionId": "anonymized_id_1"
+    },
+    {
+      "transactionId": "tx_0000Anonymized2",
+      "entryReference": "Anonymous Reference 2",
+      "bookingDate": "2025-03-31",
+      "bookingDateTime": "2025-03-31T00:00:00+00:00",
+      "transactionAmount": {
+        "amount": "-140.74",
+        "currency": "GBP"
+      },
+      "remittanceInformationUnstructured": "Anonymous Info 2",
+      "additionalInformation": "Anonymous Info 2",
+      "proprietaryBankTransactionCode": "code2",
+      "internalTransactionId": "anonymized_id_2"
+    },
+    {
+      "transactionId": "tx_0000Anonymized3",
+      "entryReference": "Anonymous Reference 3",
+      "bookingDate": "2025-04-04",
+      "bookingDateTime": "2025-04-04T00:00:00+00:00",
+      "transactionAmount": {
+        "amount": "-50.00",
+        "currency": "GBP"
+      },
+      "remittanceInformationUnstructured": "Anonymous Info 3",
+      "additionalInformation": "Anonymous Info 3",
+      "proprietaryBankTransactionCode": "code3",
+      "internalTransactionId": "anonymized_id_3"
+    },
+    {
+      "transactionId": "tx_0000Anonymized4",
+      "entryReference": "Anonymous Reference 4",
+      "bookingDate": "2025-03-18",
+      "valueDate": "2025-03-19",
+      "bookingDateTime": "2025-03-18T00:00:00+00:00",
+      "valueDateTime": "2025-03-19T00:00:00+00:00",
+      "transactionAmount": {
+        "amount": "-217.76",
+        "currency": "GBP"
+      },
+      "currencyExchange": {
+        "sourceCurrency": "GBP",
+        "exchangeRate": "2.0356",
+        "targetCurrency": "AUD"
+      },
+      "creditorName": "Anonymous Creditor 4",
+      "remittanceInformationUnstructured": "Anonymous Info 4",
+      "additionalInformation": "Anonymous Info 4",
+      "merchantCategoryCode": "0004",
+      "additionalDataStructured": {
+        "CardSchemeName": "AnonymousCard",
+        "Name": "Anonymous Name",
+        "Identification": "0004"
+      },
+      "internalTransactionId": "anonymized_id_4"
+    },
+    {
+      "transactionId": "tx_0000Anonymized5",
+      "bookingDate": "2025-04-05",
+      "bookingDateTime": "2025-04-05T14:19:47.407Z",
+      "transactionAmount": {
+        "amount": "-0.5600",
+        "currency": "GBP"
+      },
+      "remittanceInformationUnstructured": "Anonymous Info 5",
+      "proprietaryBankTransactionCode": "code5",
+      "internalTransactionId": "anonymized_id_5"
+    }
+  ]
+}

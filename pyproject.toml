@@ -24,6 +24,9 @@ classifiers = [
 keywords = ["ofx", "banking", "statement", "plugin", "ofxstatement"]
 dependencies = [
   "ofxstatement",
+    "pydantic",
+    "requests",
+    "requests-cache"
 ]
 
 [project.urls]
