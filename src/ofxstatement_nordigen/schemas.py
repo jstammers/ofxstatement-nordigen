@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
-from typing import List, Optional
 import datetime
+from typing import List, Optional, Union
+
+from pydantic import BaseModel
+
 
 class Amount(BaseModel):
     amount: float
     currency: str
-    # targetCurrency: Optional[str] = None
 
 class InstructedAmount(Amount):
     amount: float
@@ -36,7 +37,7 @@ class NordigenTransactionModel(BaseModel):
     creditorAgent: Optional[str] = None
     creditorId: Optional[str] = None
     creditorName: Optional[str] = None
-    currencyExchange: Optional[ReportExchangeRate | InstructedAmount] = None
+    currencyExchange: Optional[Union[ReportExchangeRate, InstructedAmount]] = None
     debtorAccount: Optional[Account] = None
     debtorAgent: Optional[str] = None
     debtorName: Optional[str] = None
@@ -57,7 +58,3 @@ class NordigenTransactionModel(BaseModel):
     ultimateDebtor: Optional[str] = None
     valueDate: Optional[datetime.date] = None
     valueDateTime: Optional[datetime.datetime] = None
-
-    # @check()
-    # def check_booking_status(self):
-    #     if self.booking_status
