@@ -13,5 +13,4 @@ def test_sample() -> None:
             sample_filename = os.path.join(here, filename)
             parser = plugin.get_parser(sample_filename)
             statement = parser.parse()
-            # assert isinstance(statement, Statement)
             assert statement is not None

@@ -9,7 +9,7 @@ from ofxstatement_nordigen.schemas import NordigenTransactionModel
 
 
 class NordigenPlugin(Plugin):
-    """Sample plugin (for developers only)"""
+    """Retrieves Nordigen transactions and converts them to OFX format."""
 
     def get_parser(self, filename: str) -> "NordigenParser":
         return NordigenParser(filename)
