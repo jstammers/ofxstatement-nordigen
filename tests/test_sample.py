@@ -13,4 +13,4 @@ def test_sample() -> None:
             sample_filename = os.path.join(here, filename)
             parser = plugin.get_parser(sample_filename)
             statement = parser.parse()
-            assert statement is not None
+            assert len(statement.lines) > 0
