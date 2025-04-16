@@ -34,8 +34,9 @@ class NordigenParser(StatementParser[str]):
     def split_records(self) -> Iterable[str]:
         """Return iterable object consisting of a line per transaction"""
         data = json.load(open(self.filename, "r"))
-        transactions = data.get("booked", [])
-        return [json.dumps(transaction) for transaction in transactions]
+        transactions = data.get("transactions", {})
+        booked_transactions = transactions.get("booked", [])
+        return [json.dumps(transaction) for transaction in booked_transactions]
 
     def parse_record(self, line: str) -> StatementLine:
         """Parse given transaction line and return StatementLine object"""
