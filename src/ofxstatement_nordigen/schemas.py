@@ -49,7 +49,8 @@ class NordigenTransactionModel(BaseModel):
 
     balanceAfterTransaction: Optional[float] = None
     bankTransactionCode: Optional[str] = None
-    bookingDate: Optional[datetime.datetime] = None
+    bookingDate: Optional[datetime.date] = None
+    bookingDateTime: Optional[datetime.datetime] = None
     checkId: Optional[str] = None
     creditorAccount: Optional[Account] = None
     creditorAgent: Optional[str] = None
