@@ -46,11 +46,11 @@ class NordigenParser(StatementParser[str]):
         transaction = json.loads(line)
         transaction_data = NordigenTransactionModel(**transaction)
         statement.id = transaction_data.transactionId
-        statement.date = transaction_data.valueDateTime
+        statement.date = transaction_data.bookingDate
         statement.amount = transaction_data.transactionAmount.amount
         statement.memo = transaction_data.remittanceInformationUnstructured
         statement.payee = transaction_data.creditorName or transaction_data.debtorName
-        statement.date_user = transaction_data.bookingDate
+        statement.date_user = transaction_data.valueDate
         statement.check_no = transaction_data.checkId
         statement.refnum = transaction_data.internalTransactionId
         statement.currency = transaction_data.transactionAmount.currency

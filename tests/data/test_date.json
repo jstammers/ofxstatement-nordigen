@@ -1,0 +1,20 @@
+{
+  "transactions": {
+    "booked": [
+      {
+        "transactionId": "tx_0000Anonymized1",
+        "bookingDate": "2025-03-28",
+        "bookingDateTime": "2025-03-28T11:13:14.034Z",
+        "transactionAmount": {
+          "amount": "-10.5000",
+          "currency": "GBP"
+        },
+        "creditorName": "Anonymous Creditor 1",
+        "remittanceInformationUnstructured": "Anonymous Info 1",
+        "proprietaryBankTransactionCode": "code1",
+        "merchantCategoryCode": "0001",
+        "internalTransactionId": "anonymized_id_1"
+      }
+      ]
+  }
+}
