@@ -15,6 +15,9 @@ def test_sample() -> None:
             parser = plugin.get_parser(sample_filename)
             statement = parser.parse()
             assert len(statement.lines) > 0
+            assert statement.start_date is not None
+            assert statement.end_date is not None
+            assert statement.account_id is not None
 
 
 @pytest.mark.parametrize("filename", ["test_date.json"])
@@ -30,13 +33,12 @@ def test_parse_record(filename: str) -> None:
     writer = ofx.OfxWriter(statement)
     result = writer.toxml(pretty=True)
 
-    # Get everything between the <STMTTRNRS> and </STMTTRNRS> tags
+    # Get everything between the <STMTTRN> and </STMTTRN> tags
     result = result[
-        result.index("<STMTTRNRS>") : result.index("</STMTTRNRS>") + len("</STMTTRNRS>")
+        result.index("<STMTTRN>") : result.index("</STMTTRN>") + len("</STMTTRN>")
     ]
     expected = expected[
-        expected.index("<STMTTRNRS>") : expected.index("</STMTTRNRS>")
-        + len("</STMTTRNRS>")
+        expected.index("<STMTTRN>") : expected.index("</STMTTRN>") + len("</STMTTRN>")
     ]
 
     assert result == expected
