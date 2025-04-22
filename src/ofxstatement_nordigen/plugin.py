@@ -1,6 +1,6 @@
 import json
 from typing import Iterable
-
+from datetime import datetime
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import StatementParser
 from ofxstatement.statement import Statement, StatementLine
@@ -29,7 +29,15 @@ class NordigenParser(StatementParser[str]):
         process the file.
         """
         with open(self.filename, "r"):
-            return super().parse()
+            statement = super().parse()
+            dates = [
+                line.date for line in statement.lines if isinstance(line.date, datetime)
+            ]
+            if len(dates) > 0:
+                statement.start_date = min(dates)
+                statement.end_date = max(dates)
+            statement.account_id = self.filename.split("/")[-1].split(".")[0]
+            return statement
 
     def split_records(self) -> Iterable[str]:
         """Return iterable object consisting of a line per transaction"""
