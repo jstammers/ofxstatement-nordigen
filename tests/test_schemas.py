@@ -42,8 +42,25 @@ from ofxstatement_nordigen.schemas import NordigenTransactionModel
             },
             "internalTransactionId": "anonymized_internal_transaction_id",
         },
+        {
+            "transactionId": "anonymized_transaction_id",
+            "bookingDate": "2025-04-05",
+            "bookingDateTime": "2025-05-05T07:20:42.19Z",
+            "transactionAmount": {"amount": "-100.0000", "currency": "GBP"},
+            "currencyExchange": {
+                "instructedAmount": {"amount": "204.5010", "currency": "AUD"},
+                "sourceCurrency": "AUD",
+                "exchangeRate": "2.04501",
+                "unitCurrency": "GBP",
+                "targetCurrency": "GBP",
+            },
+            "remittanceInformationUnstructured": "anonymized_remittance_information",
+            "proprietaryBankTransactionCode": "anonymized_code",
+            "internalTransactionId": "anonymized_internal_transaction_id",
+        },
     ],
 )
 def test_go_cardless_transaction_model(data):
     validated = NordigenTransactionModel(**data)
+    print(validated)
     assert validated is not None
