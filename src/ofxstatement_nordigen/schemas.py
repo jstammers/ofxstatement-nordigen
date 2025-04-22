@@ -22,24 +22,25 @@ class Amount(BaseModel):
         return value
 
 
-class InstructedAmount(Amount):
-    targetCurrency: Optional[Currency] = None
-    sourceCurrency: Optional[Currency] = None
-    exchangeRate: Optional[float] = None
+class Account(BaseModel):
+    bban: Optional[str] = None
 
-    @field_validator("targetCurrency", "sourceCurrency", mode="before")
+
+class CurrencyExchange(BaseModel):
+    sourceCurrency: Optional[Currency] = None
+    targetCurrency: Optional[Currency] = None
+    unitCurrency: Optional[Currency] = None
+    exchangeRate: Optional[float] = None
+    instructedAmount: Optional[Amount] = None
+
+    @field_validator("sourceCurrency", "targetCurrency", "unitCurrency", mode="before")
     def validate_currency(cls, value):
         if isinstance(value, str):
             return Currency(value)
         return value
 
-
-class Account(BaseModel):
-    bban: Optional[str] = None
-
-
-class ReportExchangeRate(BaseModel):
-    instructedAmount: Optional[InstructedAmount] = None
+    class Config:
+        arbitrary_types_allowed = True
 
 
 class NordigenTransactionModel(BaseModel):
@@ -56,7 +57,7 @@ class NordigenTransactionModel(BaseModel):
     creditorAgent: Optional[str] = None
     creditorId: Optional[str] = None
     creditorName: Optional[str] = None
-    currencyExchange: Optional[Union[ReportExchangeRate, InstructedAmount]] = None
+    currencyExchange: Optional[CurrencyExchange] = None
     debtorAccount: Optional[Account] = None
     debtorAgent: Optional[str] = None
     debtorName: Optional[str] = None
