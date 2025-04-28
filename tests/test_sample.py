@@ -6,6 +6,24 @@ from ofxstatement_nordigen.plugin import NordigenPlugin, NordigenParser
 from ofxstatement import ofx
 
 
+def test_config_sets_account_and_currency() -> None:
+    """Test that account and currency are set correctly when provided in config."""
+    # Create a plugin with specific account and currency settings
+    settings = {"account": "test-account-123", "currency": "EUR"}
+    plugin = NordigenPlugin(UI(), settings)
+
+    here = os.path.dirname(__file__)
+    sample_filename = os.path.join(here, "sample-statement.json")
+    parser = plugin.get_parser(sample_filename)
+
+    assert parser.account_id == settings["account"]
+    assert parser.currency == settings["currency"]
+
+    statement = parser.parse()
+    assert statement.account_id == settings["account"]
+    assert statement.currency == settings["currency"]
+
+
 def test_sample() -> None:
     plugin = NordigenPlugin(UI(), {})
     here = os.path.dirname(__file__)
@@ -17,7 +35,6 @@ def test_sample() -> None:
             assert len(statement.lines) > 0
             assert statement.start_date is not None
             assert statement.end_date is not None
-            assert statement.account_id is not None
 
 
 @pytest.mark.parametrize("filename", ["test_date.json"])

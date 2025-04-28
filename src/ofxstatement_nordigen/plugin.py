@@ -1,5 +1,5 @@
 import json
-from typing import Iterable
+from typing import Iterable, Optional
 from datetime import datetime
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import StatementParser
@@ -18,7 +18,12 @@ class NordigenPlugin(Plugin):
 
 
 class NordigenParser(StatementParser[str]):
-    def __init__(self, filename: str, currency: str = None, account_id: str = None) -> None:
+    def __init__(
+        self,
+        filename: str,
+        currency: Optional[str] = None,
+        account_id: Optional[str] = None,
+    ) -> None:
         super().__init__()
         if not filename.endswith(".json"):
             raise ValueError("Only JSON files are supported")
