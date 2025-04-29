@@ -35,24 +35,33 @@ To verify that the plugin is installed correctly, you can run:
 
     ofxstatement --list-plugins
 
-This should list the `nordigen` plugin among other plugins.
+This should list the ``nordigen`` plugin among other plugins.
 
 Usage
 ================
 
-To use the plugin, you can run the `ofxstatement` command with the `--plugin` option:
+To use the plugin, you can run the ``ofxstatement`` command with the ``--plugin`` option:
 
 .. code-block:: shell
 
     ofxstatement convert -t nordigen <input_file> <output_file>
 
-Replace `<input_file>` with the path to your input file and `<output_file>` with the desired output file name.
+Replace ``<input_file>`` with the path to your input file and ``<output_file>`` with the desired output file name.
 
 The input file should be a JSON of transactions from GoCardless that has the schema defined `here`_.
 
 .. _here: https://developer.gocardless.com/bank-account-data/transactions
 
 The output file will be an OFX file that can be imported into GnuCash or other financial software.
+
+Configuration
+================
+
+Configuration can be edited using the ``ofxstatement edit-config`` command.
+The following parameters are available:
+
+- ``account_id``: The account ID to use for the transactions. This is required.
+- ``currency``: The currency to use for the account. If not specified, the currency will be determined from the transactions.
 
 After you are done
 ==================

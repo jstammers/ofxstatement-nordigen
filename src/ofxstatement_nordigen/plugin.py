@@ -1,5 +1,5 @@
 import json
-from typing import Iterable
+from typing import Iterable, Optional
 from datetime import datetime
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import StatementParser
@@ -12,15 +12,24 @@ class NordigenPlugin(Plugin):
     """Retrieves Nordigen transactions and converts them to OFX format."""
 
     def get_parser(self, filename: str) -> "NordigenParser":
-        return NordigenParser(filename)
+        default_ccy = self.settings.get("currency")
+        account_id = self.settings.get("account")
+        return NordigenParser(filename, default_ccy, account_id)
 
 
 class NordigenParser(StatementParser[str]):
-    def __init__(self, filename: str) -> None:
+    def __init__(
+        self,
+        filename: str,
+        currency: Optional[str] = None,
+        account_id: Optional[str] = None,
+    ) -> None:
         super().__init__()
         if not filename.endswith(".json"):
             raise ValueError("Only JSON files are supported")
         self.filename = filename
+        self.currency = currency
+        self.account_id = account_id
 
     def parse(self) -> Statement:
         """Main entry point for parsers
@@ -36,7 +45,8 @@ class NordigenParser(StatementParser[str]):
             if len(dates) > 0:
                 statement.start_date = min(dates)
                 statement.end_date = max(dates)
-            statement.account_id = self.filename.split("/")[-1].split(".")[0]
+            statement.account_id = self.account_id
+            statement.currency = self.currency or statement.currency
             return statement
 
     def split_records(self) -> Iterable[str]:
