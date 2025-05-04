@@ -1,0 +1,12 @@
+{"transactions":
+ {"booked": [
+     {"transactionId": "202500400015",
+      "entryReference": "202500400015",
+      "bookingDate": "2025-05-02",
+      "valueDate": "2025-05-02",
+      "transactionAmount": {"amount": "-8.43", "currency": "EUR"},
+      "remittanceInformationUnstructuredArray": ["CB****2222", "Food Restaurant"],
+      "bankTransactionCode": "XXXXXXX",
+      "internalTransactionId": "YYYYYYYYYYYYYY"}
+ ],
+  "pending": []}}
