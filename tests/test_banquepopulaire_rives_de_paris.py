@@ -31,7 +31,7 @@ def test_banquepopulaire_rives_de_paris(filename: str) -> None:
     assert transaction.id == "202500400015"
     assert transaction.date.date() == date(2025, 5, 2)
     assert transaction.amount == Decimal("-8.43")
-    assert transaction.currency == Currency("EUR")
+    assert transaction.currency.symbol == "EUR"
     assert transaction.refnum == "YYYYYYYYYYYYYY"
 
     # Check if the memo contains the combined information from remittanceInformationUnstructuredArray
