@@ -71,7 +71,7 @@ class NordigenTransactionModel(BaseModel):
     remittanceInformationStructured: Optional[str] = None
     remittanceInformationStructuredArray: Optional[List[str]] = None
     remittanceInformationUnstructured: Optional[str] = None
-    remmittanceInformationUnstructuredArray: Optional[List[str]] = None
+    remittanceInformationUnstructuredArray: Optional[List[str]] = None
     transactionAmount: Amount
     transactionId: Optional[str] = None
     ultimateCreditor: Optional[str] = None
