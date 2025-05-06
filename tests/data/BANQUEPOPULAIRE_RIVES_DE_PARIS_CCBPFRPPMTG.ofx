@@ -1,0 +1,58 @@
+<!--
+OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+SECURITY:NONE
+ENCODING:UTF-8
+CHARSET:NONE
+COMPRESSION:NONE
+OLDFILEUID:NONE
+NEWFILEUID:NONE
+-->
+<OFX>
+  <SIGNONMSGSRSV1>
+    <SONRS>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <DTSERVER>20250503085155</DTSERVER>
+      <LANGUAGE>ENG</LANGUAGE>
+    </SONRS>
+  </SIGNONMSGSRSV1>
+  <BANKMSGSRSV1>
+    <STMTTRNRS>
+      <TRNUID>0</TRNUID>
+      <STATUS>
+        <CODE>0</CODE>
+        <SEVERITY>INFO</SEVERITY>
+      </STATUS>
+      <STMTRS>
+        <BANKACCTFROM>
+          <BANKID/>
+          <ACCTID/>
+          <ACCTTYPE>CHECKING</ACCTTYPE>
+        </BANKACCTFROM>
+        <BANKTRANLIST>
+          <DTSTART/>
+          <DTEND/>
+          <STMTTRN>
+            <TRNTYPE>CHECK</TRNTYPE>
+            <DTPOSTED>20250502</DTPOSTED>
+            <TRNAMT>-8.43</TRNAMT>
+            <FITID>202500400015</FITID>
+            <REFNUM>YYYYYYYYYYYYYY</REFNUM>
+            <MEMO>CB****2222 Food Restaurant</MEMO>
+            <CURRENCY>
+              <CURSYM>EUR</CURSYM>
+            </CURRENCY>
+          </STMTTRN>
+        </BANKTRANLIST>
+        <LEDGERBAL>
+          <BALAMT/>
+          <DTASOF/>
+        </LEDGERBAL>
+      </STMTRS>
+    </STMTTRNRS>
+  </BANKMSGSRSV1>
+</OFX>

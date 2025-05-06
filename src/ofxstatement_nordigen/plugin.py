@@ -64,9 +64,17 @@ class NordigenParser(StatementParser[str]):
         transaction = json.loads(line)
         transaction_data = NordigenTransactionModel(**transaction)
         statement.id = transaction_data.transactionId
-        statement.date = transaction_data.bookingDateTime
+        # Use bookingDateTime if available, otherwise convert bookingDate to datetime
+        if transaction_data.bookingDateTime:
+            statement.date = transaction_data.bookingDateTime
+        elif transaction_data.bookingDate:
+            statement.date = datetime.combine(transaction_data.bookingDate, datetime.min.time())
         statement.amount = transaction_data.transactionAmount.amount
-        statement.memo = transaction_data.remittanceInformationUnstructured
+        # Handle different types of remittance information
+        if transaction_data.remittanceInformationUnstructured:
+            statement.memo = transaction_data.remittanceInformationUnstructured
+        elif transaction_data.remittanceInformationUnstructuredArray:
+            statement.memo = " ".join(transaction_data.remittanceInformationUnstructuredArray)
         statement.payee = transaction_data.creditorName or transaction_data.debtorName
         statement.date_user = transaction_data.valueDateTime
         statement.check_no = transaction_data.checkId
