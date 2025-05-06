@@ -68,13 +68,17 @@ class NordigenParser(StatementParser[str]):
         if transaction_data.bookingDateTime:
             statement.date = transaction_data.bookingDateTime
         elif transaction_data.bookingDate:
-            statement.date = datetime.combine(transaction_data.bookingDate, datetime.min.time())
+            statement.date = datetime.combine(
+                transaction_data.bookingDate, datetime.min.time()
+            )
         statement.amount = transaction_data.transactionAmount.amount
         # Handle different types of remittance information
         if transaction_data.remittanceInformationUnstructured:
             statement.memo = transaction_data.remittanceInformationUnstructured
         elif transaction_data.remittanceInformationUnstructuredArray:
-            statement.memo = " ".join(transaction_data.remittanceInformationUnstructuredArray)
+            statement.memo = " ".join(
+                transaction_data.remittanceInformationUnstructuredArray
+            )
         statement.payee = transaction_data.creditorName or transaction_data.debtorName
         statement.date_user = transaction_data.valueDateTime
         statement.check_no = transaction_data.checkId
