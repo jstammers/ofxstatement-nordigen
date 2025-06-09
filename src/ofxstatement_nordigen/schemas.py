@@ -31,7 +31,7 @@ class CurrencyExchange(BaseModel):
     targetCurrency: Optional[Currency] = None
     unitCurrency: Optional[Currency] = None
     exchangeRate: Optional[float] = None
-    instructedAmount: Optional[Amount] = None
+    quotationDate: Optional[datetime.date] = None
 
     @field_validator("sourceCurrency", "targetCurrency", "unitCurrency", mode="before")
     def validate_currency(cls, value):
@@ -57,7 +57,7 @@ class NordigenTransactionModel(BaseModel):
     creditorAgent: Optional[str] = None
     creditorId: Optional[str] = None
     creditorName: Optional[str] = None
-    currencyExchange: Optional[CurrencyExchange] = None
+    currencyExchange: Optional[List[CurrencyExchange]] = None
     debtorAccount: Optional[Account] = None
     debtorAgent: Optional[str] = None
     debtorName: Optional[str] = None
