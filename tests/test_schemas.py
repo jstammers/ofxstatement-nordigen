@@ -32,7 +32,7 @@ from ofxstatement_nordigen.schemas import NordigenTransactionModel
             "bookingDateTime": "2025-04-05T00:00:00+00:00",
             "valueDateTime": "2025-04-05T00:00:00+00:00",
             "transactionAmount": {"amount": "0.00", "currency": "XXX"},
-            "currencyExchange": {"sourceCurrency": "XXX", "exchangeRate": "0.0"},
+            "currencyExchange": [{"sourceCurrency": "XXX", "exchangeRate": "0.0"}],
             "remittanceInformationUnstructured": "anonymized_remittance_information",
             "additionalInformation": "anonymized_additional_information",
             "additionalDataStructured": {
@@ -47,13 +47,15 @@ from ofxstatement_nordigen.schemas import NordigenTransactionModel
             "bookingDate": "2025-04-05",
             "bookingDateTime": "2025-05-05T07:20:42.19Z",
             "transactionAmount": {"amount": "-100.0000", "currency": "GBP"},
-            "currencyExchange": {
-                "instructedAmount": {"amount": "204.5010", "currency": "AUD"},
-                "sourceCurrency": "AUD",
-                "exchangeRate": "2.04501",
-                "unitCurrency": "GBP",
-                "targetCurrency": "GBP",
-            },
+            "currencyExchange": [
+                {
+                    "quotationDate": "2025-04-05",
+                    "sourceCurrency": "AUD",
+                    "exchangeRate": "2.04501",
+                    "unitCurrency": "GBP",
+                    "targetCurrency": "GBP",
+                }
+            ],
             "remittanceInformationUnstructured": "anonymized_remittance_information",
             "proprietaryBankTransactionCode": "anonymized_code",
             "internalTransactionId": "anonymized_internal_transaction_id",

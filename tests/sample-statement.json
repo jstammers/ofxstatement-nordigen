@@ -54,11 +54,11 @@
           "amount": "-217.76",
           "currency": "GBP"
         },
-        "currencyExchange": {
+        "currencyExchange": [{
           "sourceCurrency": "GBP",
           "exchangeRate": "2.0356",
           "targetCurrency": "AUD"
-        },
+        }],
         "creditorName": "Anonymous Creditor 4",
         "remittanceInformationUnstructured": "Anonymous Info 4",
         "additionalInformation": "Anonymous Info 4",
