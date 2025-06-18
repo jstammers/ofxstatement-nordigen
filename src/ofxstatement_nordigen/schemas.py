@@ -26,12 +26,38 @@ class Account(BaseModel):
     bban: Optional[str] = None
 
 
-class CurrencyExchange(BaseModel):
+class ReportExchangeRate(BaseModel):
     sourceCurrency: Optional[Currency] = None
     targetCurrency: Optional[Currency] = None
     unitCurrency: Optional[Currency] = None
     exchangeRate: Optional[float] = None
     quotationDate: Optional[datetime.date] = None
+
+    @field_validator("sourceCurrency", "targetCurrency", "unitCurrency", mode="before")
+    def validate_currency(cls, value):
+        if isinstance(value, str):
+            return Currency(value)
+        return value
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class CurrencyExchangeAmex(BaseModel):
+    """
+    Context: Issue #11
+
+    Temporary Fix:
+    This addresses the lack of normalization of American Express data to the GoCardless specification.
+
+    Note: This class should be removed once the normalization process is completed.
+    """
+
+    sourceCurrency: Optional[Currency] = None
+    targetCurrency: Optional[Currency] = None
+    unitCurrency: Optional[Currency] = None
+    exchangeRate: Optional[float] = None
+    instructedAmount: Optional[Amount] = None
 
     @field_validator("sourceCurrency", "targetCurrency", "unitCurrency", mode="before")
     def validate_currency(cls, value):
@@ -57,7 +83,7 @@ class NordigenTransactionModel(BaseModel):
     creditorAgent: Optional[str] = None
     creditorId: Optional[str] = None
     creditorName: Optional[str] = None
-    currencyExchange: Optional[List[CurrencyExchange]] = None
+    currencyExchange: Optional[List[ReportExchangeRate] | CurrencyExchangeAmex] = None
     debtorAccount: Optional[Account] = None
     debtorAgent: Optional[str] = None
     debtorName: Optional[str] = None
