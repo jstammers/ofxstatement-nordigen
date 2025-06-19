@@ -63,7 +63,9 @@ class NordigenParser(StatementParser[str]):
         statement = StatementLine()
         transaction = json.loads(line)
         transaction_data = NordigenTransactionModel(**transaction)
-        statement.id = transaction_data.transactionId or transaction_data.internalTransactionId
+        statement.id = (
+            transaction_data.transactionId or transaction_data.internalTransactionId
+        )
         # Use bookingDateTime if available, otherwise convert bookingDate to datetime
         if transaction_data.bookingDateTime:
             statement.date = transaction_data.bookingDateTime

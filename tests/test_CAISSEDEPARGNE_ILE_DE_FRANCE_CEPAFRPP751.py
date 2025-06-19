@@ -12,9 +12,7 @@ from ofxstatement_nordigen.plugin import NordigenPlugin, NordigenParser
 from ofxstatement_nordigen.schemas import NordigenTransactionModel
 
 
-@pytest.mark.parametrize(
-    "filename", ["CAISSEDEPARGNE_ILE_DE_FRANCE_CEPAFRPP751.json"]
-)
+@pytest.mark.parametrize("filename", ["CAISSEDEPARGNE_ILE_DE_FRANCE_CEPAFRPP751.json"])
 def test_CAISSEDEPARGNE_ILE_DE_FRANCE(filename: str) -> None:
     """Test parsing the CAISSEDEPARGNE_ILE_DE_FRANCE_CEPAFRPP751.json file."""
     here = os.path.dirname(__file__)
@@ -31,14 +29,20 @@ def test_CAISSEDEPARGNE_ILE_DE_FRANCE(filename: str) -> None:
     transaction = statement.lines[0]
     assert transaction.id == "6666666"
 
-    assert transaction.date is not None # Fix for mypy: Check that date is not None before accessing date() method
-    assert transaction.date.date() == date(2025,5,13)
+    assert (
+        transaction.date is not None
+    )  # Fix for mypy: Check that date is not None before accessing date() method
+    assert transaction.date.date() == date(2025, 5, 13)
 
     assert transaction.amount == Decimal("-1")
 
-    assert transaction.currency is not None # Fix for mypy: Check that currency is not None before accessing symbol attribute
+    assert (
+        transaction.currency is not None
+    )  # Fix for mypy: Check that currency is not None before accessing symbol attribute
     assert transaction.currency.symbol == "EUR"
 
     # Check if the memo contains the combined information from remittanceInformationUnstructuredArray
-    assert transaction.memo is not None # Fix for mypy: Check that memo is not None before using 'in' operator
+    assert (
+        transaction.memo is not None
+    )  # Fix for mypy: Check that memo is not None before using 'in' operator
     assert "PRLV assurance" in transaction.memo
