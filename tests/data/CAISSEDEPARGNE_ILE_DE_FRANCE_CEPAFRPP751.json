@@ -1,0 +1,21 @@
+
+{
+  "transactions": {
+    "booked": [
+      {
+        "entryReference": "777",
+        "bookingDate": "2025-05-13",
+        "transactionAmount": {
+          "amount": "-1",
+          "currency": "EUR"
+        },
+        "remittanceInformationUnstructuredArray": [
+          "PRLV assurance"
+        ],
+        "bankTransactionCode": "PMNN-RRRR-EEEE",
+        "internalTransactionId": "6666666"
+      }
+    ],
+    "pending": []
+  }
+}
