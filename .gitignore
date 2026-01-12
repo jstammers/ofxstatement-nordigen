@@ -13,3 +13,4 @@ eggs
 .idea
 .DS_Store
 .coverage
+.vscode

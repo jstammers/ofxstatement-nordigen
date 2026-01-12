@@ -50,12 +50,12 @@ def test_parse_record(filename: str) -> None:
     writer = ofx.OfxWriter(statement)
     result = writer.toxml(pretty=True)
 
-    # Get everything between the <STMTTRN> and </STMTTRN> tags
+    # Get everything between the <STMTTRN> and </STMTTRN> tags ignoring \r characters
     result = result[
         result.index("<STMTTRN>") : result.index("</STMTTRN>") + len("</STMTTRN>")
-    ]
+    ].replace("\r", "")
     expected = expected[
         expected.index("<STMTTRN>") : expected.index("</STMTTRN>") + len("</STMTTRN>")
-    ]
+    ].replace("\r", "")
 
     assert result == expected
