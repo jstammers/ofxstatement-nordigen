@@ -37,7 +37,7 @@ def test_sample() -> None:
             assert statement.end_date is not None
 
 
-@pytest.mark.parametrize("filename", ["test_date.json"])
+@pytest.mark.parametrize("filename", ["test_date.json", "test_snake_case.json"])
 def test_parse_record(filename: str) -> None:
     here = os.path.dirname(__file__)
     sample_filename = os.path.join(here, "data", filename)

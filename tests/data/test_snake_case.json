@@ -1,0 +1,42 @@
+{
+  "transactions": {
+    "booked": [
+      {
+        "transaction_id": "ANONYMIZED_ID_1",
+        "debtor_name": null,
+        "debtor_account": null,
+        "transaction_amount": {
+          "amount": "-5.81",
+          "currency": "GBP"
+        },
+        "booking_date": "2026-01-12",
+        "value_date": null,
+        "remittance_information_unstructured": "ANONYMIZED MERCHANT",
+        "remittance_information_structured": null,
+        "additional_information": "ANONYMIZED MERCHANT",
+        "creditor_name": null,
+        "creditor_account": null,
+        "currency_exchange": null,
+        "balance_after_transaction": null,
+        "bank_transaction_code": null,
+        "proprietary_bank_transaction_code": "ANONYMIZED_CODE",
+        "internal_transaction_id": "ANONYMIZED_INTERNAL_ID",
+        "remittance_information_unstructured_array": null,
+        "booking_date_time": "2026-01-12T00:00:00+00:00",
+        "value_date_time": null,
+        "entry_reference": "ANONYMIZED MERCHANT",
+        "additional_information_structured": null,
+        "card_transaction": null,
+        "merchant_category_code": null,
+        "creditor_id": null,
+        "mandate_id": null,
+        "transaction_status": null,
+        "funds_code": null,
+        "batch_booking_indicator": null,
+        "number_of_transactions": null,
+        "account_servicer_reference": null
+      }
+    ]
+  },
+  "pending": []
+}
