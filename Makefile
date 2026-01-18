@@ -1,17 +1,16 @@
-all: test mypy black
+all: test mypy ruff
 
 PHONY: test
 test:
-	pytest
+	uv run pytest
 
 PHONY: coverage
-coverage: bin/pytest
-	pytest --cov src/ofxstatement
-
-.PHONY: black
-black:
-	black src tests
+coverage:
+	uv run pytest --cov src/ofxstatement
+.PHONY: ruff
+ruff:
+	uv run ruff format src tests
 
 .PHONY: mypy
 mypy:
-	mypy src tests
+	uv run mypy src tests

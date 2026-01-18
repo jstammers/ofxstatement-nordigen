@@ -3,23 +3,23 @@ from __future__ import annotations
 import datetime
 from ofxstatement.statement import Currency
 from decimal import Decimal
-from typing import List, Optional, Union
+from typing import List, Optional
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ConfigDict
+from pydantic.alias_generators import to_snake
 
 
 class Amount(BaseModel):
     amount: Decimal
     currency: Currency
 
-    class Config:
-        arbitrary_types_allowed = True
-
     @field_validator("currency", mode="before")
     def validate_currency(cls, value):
         if isinstance(value, str):
             return Currency(value)
         return value
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class Account(BaseModel):
@@ -33,14 +33,13 @@ class ReportExchangeRate(BaseModel):
     exchangeRate: Optional[float] = None
     quotationDate: Optional[datetime.date] = None
 
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     @field_validator("sourceCurrency", "targetCurrency", "unitCurrency", mode="before")
     def validate_currency(cls, value):
         if isinstance(value, str):
             return Currency(value)
         return value
-
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class CurrencyExchangeAmex(BaseModel):
@@ -65,8 +64,7 @@ class CurrencyExchangeAmex(BaseModel):
             return Currency(value)
         return value
 
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class NordigenTransactionModel(BaseModel):
@@ -104,3 +102,10 @@ class NordigenTransactionModel(BaseModel):
     ultimateDebtor: Optional[str] = None
     valueDate: Optional[datetime.date] = None
     valueDateTime: Optional[datetime.datetime] = None
+
+    # class Config:
+    #     alias_generator = to_snake
+
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True, alias_generator=to_snake, populate_by_name=True
+    )
