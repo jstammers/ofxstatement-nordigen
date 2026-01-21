@@ -1,3 +1,4 @@
+PYPROJECT := pyproject.toml
 all: test mypy ruff
 
 PHONY: test
@@ -14,3 +15,17 @@ ruff:
 .PHONY: mypy
 mypy:
 	uv run mypy src tests
+
+
+
+.PHONY: bump-patch bump-minor bump-major
+
+bump-patch:
+	@uv version --bump patch
+
+bump-minor:
+	@uv version --bump minor
+
+bump-major:
+	@uv version --bump major
+
